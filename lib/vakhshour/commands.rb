@@ -17,30 +17,25 @@
 #++
 require 'ramp'
 
-require "vakhshour/version"
-
-#:nodoc:
 module Vakhshour
+  
+  module Commands
 
-  class Node
+    class Event < Ramp::Command
 
-    def initialize (host='localhost',
-                    port=8888,
-                    kwargs={
-                      async: false,
-                      ssl_key: nil,
-                      ssl_cert: nil,
-                    })
-      @remote = Ramp::AmpClient.new host, port, kwargs
-      
+      command "Event"
+
+      arguments (
+                 {name: Ramp::Fields::StringField,
+                   sender: Ramp::Fields::StringField,
+                   kwargs: Ramp::Fields::JsonField}
+                 )
+
+      responses (
+                 {status: Ramp::Fields::IntegerField}
+                 )
     end
 
-    def send_event
-    end
-    
+  end
+
 end
-
-
-
-
-s.call_remote(Event, sender: "mew", name: "somehow", kwargs: {:as => "asdasd"})
