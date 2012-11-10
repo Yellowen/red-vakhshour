@@ -22,8 +22,9 @@ require "vakhshour/version"
 #:nodoc:
 module Vakhshour
 
+  # This class represent a network node, mostly a Vakhshour server
   class Node
-
+    
     def initialize (host='localhost',
                     port=8888,
                     kwargs={
@@ -35,12 +36,15 @@ module Vakhshour
       
     end
 
-    def send_event
+    def send_event(name, sender, kwargs)
+      args = {
+        name: name,
+        sender: sender,
+        kwargs: kwargs,
+      }
+      @remote.call_remote(Event, args)
+
     end
-    
+
+  end
 end
-
-
-
-
-s.call_remote(Event, sender: "mew", name: "somehow", kwargs: {:as => "asdasd"})
