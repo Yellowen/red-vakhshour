@@ -22,9 +22,17 @@ require "vakhshour/version"
 #:nodoc:
 module Vakhshour
 
-  # This class represent a network node, mostly a Vakhshour server
+  # This class represent a network node, mostly a Vakhshour server any given
+  # parameter will pass directly to the AmpClient initialize method
   class Node
     
+    # host:: Remote vakhshour server address
+    # port:: Port of the remote server.
+    # kwargs:: optional arguments
+    # * async:: If this value be true, Vakhshour will process the response of
+    #           the command asynchronously 
+    # * ssl_key:: Path of SSL key file.
+    # * ssl_cert:: Path of SSL cert file.
     def initialize (host='localhost',
                     port=8888,
                     kwargs={
@@ -36,6 +44,11 @@ module Vakhshour
       
     end
 
+    # Send and event to the vakhshour server.
+    # name:: Name of event to send
+    # sender:: Who is sednig the event
+    # kwargs:: A hash representing the arguments of the command
+    #          Vakhshour will pass these arguments to event handlers.
     def send_event(name, sender, kwargs)
       args = {
         name: name,

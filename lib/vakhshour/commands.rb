@@ -17,10 +17,13 @@
 #++
 require 'ramp'
 
+#:nodoc:
 module Vakhshour
   
+  # This module contains all the vakhshour commands. currently just *"Event"*.
   module Commands
 
+    # *Event* class is a *AMP* protocl command.
     class Event < Ramp::Command
 
       command "Event"

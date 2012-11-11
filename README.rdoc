@@ -1,0 +1,4 @@
+:title: Red Vakhshour
+=Red Vakhshour
+*Red Vakhshour* is {Vakhshour}[http://vakhshour.yellowen.com/] client implemented in Ruby language.
+By using *Vashkour* you will have a very simple to use and secure RPC system. 
